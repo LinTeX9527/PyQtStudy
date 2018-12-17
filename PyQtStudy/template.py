@@ -10,7 +10,7 @@ Create on
 PyQt5 工程模板
 """
 
-from PyQt5.QtWidgets import QWidget, QApplication
+from PyQt5.QtWidgets import QWidget, QApplication, QGridLayout
 import sys
 
 class MyWindow(QWidget):
