@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
+TODO: 添加时间
 Create on
 
 @author: lintex9527@yeah.net
@@ -16,6 +17,7 @@ import sys
 class MyWindow(QWidget):
     def __init__(self):
         super(MyWindow, self).__init__()
+        # TODO: 修改窗口名称
         self.initGUI("PyQt5 学习")
 
     def initGUI(self, title):
@@ -37,4 +39,3 @@ if __name__ == '__main__':
     screen.show()
 
     sys.exit(app.exec_())
-
