@@ -57,6 +57,7 @@ class MyWindow(QWidget):
         self.setLayout(layout)
 
         self.checkbox1 = QCheckBox("Kestrel")
+        self.checkbox1.setToolTip("什么意思")
         self.checkbox1.setChecked(True)
         self.checkbox1.toggled.connect(self.checkbox_toggled)
         layout.addWidget(self.checkbox1, 0, 0)
@@ -66,6 +67,7 @@ class MyWindow(QWidget):
         layout.addWidget(self.checkbox2, 1, 0)
 
         self.checkbox3 = QCheckBox("Hobby")
+        self.checkbox3.setToolTip("兴趣爱好")
         self.checkbox3.toggled.connect(self.checkbox_toggled)
         layout.addWidget(self.checkbox3, 2, 0)
 
@@ -74,6 +76,7 @@ class MyWindow(QWidget):
         layout.setHorizontalSpacing(5)
 
         self.checkbox4 = QCheckBox("Sex")
+        self.checkbox4.setToolTip("三态复选框")
         self.checkbox4.setTristate(True)
         self.checkbox4.setCheckState(True)
         self.checkbox4.toggled.connect(self.checkbox_toggled)
@@ -81,6 +84,7 @@ class MyWindow(QWidget):
         layout2.addWidget(self.checkbox4)
 
         self.checkbox5 = QCheckBox("Age")
+        self.checkbox5.setToolTip("两态复选框")
         self.checkbox5.setTristate(False)
         self.checkbox5.setChecked(True)
         self.checkbox5.toggled.connect(self.checkbox_toggled)
