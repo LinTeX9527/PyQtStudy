@@ -42,7 +42,7 @@ boxlayout.insertSpacing(index, spacing)
 """
 
 
-from PyQt5.QtWidgets import QWidget, QBoxLayout, QLabel, QApplication
+from PyQt5.QtWidgets import QWidget, QBoxLayout, QLabel, QApplication, QPushButton
 import sys
 
 
@@ -56,18 +56,29 @@ class Window(QWidget):
         layout = QBoxLayout(QBoxLayout.LeftToRight)
         self.setLayout(layout)
 
-        label = QLabel("Label 1")
+        label = QLabel("C")
         layout.addWidget(label, 0)
-        label = QLabel("Label 2")
+        label = QLabel("C++")
         layout.addWidget(label, 0)
 
         layout2 = QBoxLayout(QBoxLayout.TopToBottom)
         layout.addLayout(layout2)
 
-        label = QLabel("Label 3")
+        label = QLabel("Java")
         layout2.addWidget(label, 0)
-        label = QLabel("Label 4")
+        label = QLabel("Python")
         layout2.addWidget(label, 0)
+
+        # 新的布局，管理两个按钮
+        layout3 = QBoxLayout(QBoxLayout.RightToLeft)
+        layout.addLayout(layout3)
+
+        # TODO: 给按钮添加响应方法
+        btn_opacity_half = QPushButton("半透明")
+        layout3.addWidget(btn_opacity_half)
+        btn_opacity_all = QPushButton("完全不透明")
+        layout3.addWidget(btn_opacity_all)
+
 
     def initGUI(self, title):
         """
