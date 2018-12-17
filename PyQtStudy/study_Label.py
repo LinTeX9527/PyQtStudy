@@ -51,7 +51,7 @@ label.setBuddy(widget)
 """
 
 from PyQt5.QtCore import *
-from PyQt5.QtWidgets import QApplication, QLabel, QWidget, QGridLayout
+from PyQt5.QtWidgets import QApplication, QLabel, QWidget, QGridLayout, QPushButton
 import sys
 
 class MyWindow(QWidget):
@@ -68,6 +68,15 @@ class MyWindow(QWidget):
         label = QLabel("Few people could understand Dale's motivation.")
         label.setWordWrap(True)
         layout.addWidget(label, 0, 1)
+
+        btn = QPushButton("What to do?")
+        # btn.setContentsMargins(20, 20, 20, 20)
+        layout.addWidget(btn, 1, 0, 2, 1)
+
+        # 为btn添加助记符（快捷方式），这里设置Alt+S为btn的触发方式
+        btn_help = QLabel("&Short key to btn")
+        btn_help.setBuddy(btn)
+        layout.addWidget(btn_help, 1, 1)
 
     def initGUI(self, title):
         """
