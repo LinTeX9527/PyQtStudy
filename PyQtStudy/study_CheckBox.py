@@ -77,6 +77,7 @@ class MyWindow(QWidget):
         self.checkbox4.setTristate(True)
         self.checkbox4.setCheckState(True)
         self.checkbox4.toggled.connect(self.checkbox_toggled)
+        self.checkbox4.clicked.connect(self.on_clicked)
         layout2.addWidget(self.checkbox4)
 
         self.checkbox5 = QCheckBox("Age")
@@ -84,6 +85,18 @@ class MyWindow(QWidget):
         self.checkbox5.setChecked(True)
         self.checkbox5.toggled.connect(self.checkbox_toggled)
         layout2.addWidget(self.checkbox5)
+
+    def on_clicked(self):
+        """
+        三态复选框最好使用 clicked() 信号，因为它能检查到 Qt.Checked 值，
+        而 checkbox_toggled() 信号用 Qt.PartiallyChecked 覆盖了 Qt.Checked 事件
+        """
+        if self.checkbox4.checkState() == Qt.PartiallyChecked:
+            print("按钮4 -- 三态复选框 -- 部分选中了")
+        elif self.checkbox4.checkState() == Qt.Unchecked:
+            print("按钮4 -- 三态复选框 -- 取消选中")
+        elif self.checkbox4.checkState() == Qt.Checked:
+            print("按钮4 -- 三态复选框 -- 选中了")
 
     def checkbox_toggled(self):
         selected = []
