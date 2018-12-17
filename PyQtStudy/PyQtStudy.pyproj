@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>9d98996f-8de8-485b-8a1d-18f207b4a2fb</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>study_Window.py</StartupFile>
+    <StartupFile>study_BoxLayout.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>

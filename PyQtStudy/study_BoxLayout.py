@@ -48,7 +48,8 @@ import sys
 
 class Window(QWidget):
     def __init__(self):
-        QWidget.__init__(self)
+        "另一种初始化方法"
+        super(Window, self).__init__()
 
         self.initGUI("BoxLayout")
 
