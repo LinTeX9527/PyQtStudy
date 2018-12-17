@@ -44,6 +44,8 @@ Qt.Checked 选中
 """
 
 from PyQt5.QtWidgets import QWidget, QApplication, QGridLayout, QCheckBox
+from PyQt5.QtWidgets import QBoxLayout
+from PyQt5.QtCore import Qt
 import sys
 
 class MyWindow(QWidget):
@@ -67,9 +69,26 @@ class MyWindow(QWidget):
         self.checkbox3.toggled.connect(self.checkbox_toggled)
         layout.addWidget(self.checkbox3, 2, 0)
 
+        layout2 = QBoxLayout(QBoxLayout.TopToBottom)
+        layout.addLayout(layout2, 0, 1)
+        layout.setHorizontalSpacing(5)
+
+        self.checkbox4 = QCheckBox("Sex")
+        self.checkbox4.setTristate(True)
+        self.checkbox4.setCheckState(True)
+        self.checkbox4.toggled.connect(self.checkbox_toggled)
+        layout2.addWidget(self.checkbox4)
+
+        self.checkbox5 = QCheckBox("Age")
+        self.checkbox5.setTristate(False)
+        self.checkbox5.setChecked(True)
+        self.checkbox5.toggled.connect(self.checkbox_toggled)
+        layout2.addWidget(self.checkbox5)
+
     def checkbox_toggled(self):
         selected = []
 
+        print("\n")
         if self.checkbox1.isChecked():
             selected.append(self.checkbox1.text())
 
@@ -78,6 +97,22 @@ class MyWindow(QWidget):
 
         if self.checkbox3.isChecked():
             selected.append(self.checkbox3.text())
+
+        if self.checkbox4.isTristate():
+            if self.checkbox4.checkState() == Qt.PartiallyChecked:
+                print("按钮4 -- 三态复选框 -- 部分选中了")
+            elif self.checkbox4.checkState() == Qt.Unchecked:
+                print("按钮4 -- 三态复选框 -- 取消选中")
+            elif self.checkbox4.checkState() == Qt.Checked:
+                print("按钮4 -- 三态复选框 -- 选中了")
+
+        if self.checkbox5.isTristate():
+            print("按钮5 -- 三态")
+        else:
+            if self.checkbox5.isChecked():
+                print("按钮5 -- 非三态 -- 选中")
+            else:
+                print("按钮5 -- 非三态 -- 未选中")
 
         print("Selected: %s" % (" ".join(selected)))
 
