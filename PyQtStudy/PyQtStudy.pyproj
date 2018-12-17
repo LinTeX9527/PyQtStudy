@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>9d98996f-8de8-485b-8a1d-18f207b4a2fb</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>study_GridLayout.py</StartupFile>
+    <StartupFile>study_Label.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -25,6 +25,9 @@
     <Compile Include="study_BoxLayout.py" />
     <Compile Include="study_GridLayout.py" />
     <Compile Include="study_HelloWorld.py" />
+    <Compile Include="study_Label.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="study_Window.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
