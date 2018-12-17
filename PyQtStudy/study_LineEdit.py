@@ -53,12 +53,20 @@ class MyWindow(QWidget):
         self.setLayout(layout)
 
         self.lineedit = QLineEdit()
+        # 绑定信号与槽函数
+        self.lineedit.textChanged.connect(self.text_changed)
         self.lineedit.returnPressed.connect(self.return_pressed)
         layout.addWidget(self.lineedit, 0, 0)
 
         self.msgBox = QLabel()
         self.msgBox.resize(100, 60)
         layout.addWidget(self.msgBox, 1, 0)
+
+    def text_changed(self):
+        """
+        当输入框中文本发生变化时就触发这个方法
+        """
+        print(self.lineedit.text())
 
     def return_pressed(self):
         """
