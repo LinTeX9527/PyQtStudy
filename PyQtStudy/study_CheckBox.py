@@ -43,8 +43,16 @@ Qt.PartiallyChecked 部分选中
 Qt.Checked 选中
 """
 
+"""
+widget.setToolTip(text)
+设置tooltip
+
+widget.setWhatsThis(text)
+设置whatsthis 帮助文档
+"""
+
 from PyQt5.QtWidgets import QWidget, QApplication, QGridLayout, QCheckBox
-from PyQt5.QtWidgets import QBoxLayout
+from PyQt5.QtWidgets import QBoxLayout, QPushButton
 from PyQt5.QtCore import Qt
 import sys
 
@@ -58,11 +66,14 @@ class MyWindow(QWidget):
 
         self.checkbox1 = QCheckBox("Kestrel")
         self.checkbox1.setToolTip("什么意思")
+        # FIXME: 为什么不能显示 WhatsThis?
+        self.checkbox1.setWhatsThis("帮助文档也解决不了这个问题")
         self.checkbox1.setChecked(True)
         self.checkbox1.toggled.connect(self.checkbox_toggled)
         layout.addWidget(self.checkbox1, 0, 0)
 
         self.checkbox2 = QCheckBox("Sparrowhawk")
+        self.checkbox2.setWhatsThis("帮助文档：看起来像是什么老鹰")
         self.checkbox2.toggled.connect(self.checkbox_toggled)
         layout.addWidget(self.checkbox2, 1, 0)
 
@@ -89,6 +100,11 @@ class MyWindow(QWidget):
         self.checkbox5.setChecked(True)
         self.checkbox5.toggled.connect(self.checkbox_toggled)
         layout2.addWidget(self.checkbox5)
+
+        self.btn = QPushButton("Click Me")
+        self.btn.setWhatsThis("点击我呀笨蛋")
+        layout2.addSpacing(10)
+        layout2.addWidget(self.btn)
 
     def on_clicked(self):
         """
