@@ -41,7 +41,9 @@ lineedit.textChanged.connect(text_changed_function)
 只要里面的文本发生了改变就发出一个信号
 """
 
-from PyQt5.QtWidgets import QWidget, QApplication, QGridLayout, QLineEdit, QLabel
+from PyQt5.QtWidgets import QWidget, QApplication, QGridLayout, QLineEdit
+from PyQt5.QtWidgets import QLabel, QCompleter
+from PyQt5.QtCore import Qt
 import sys
 
 class MyWindow(QWidget):
@@ -52,7 +54,16 @@ class MyWindow(QWidget):
         layout = QGridLayout()
         self.setLayout(layout)
 
+        # 自动猜想和补全的词库
+        stringList = ["alpha", "omega", "omicrom", "apple", "banana", "orange"]
+        completer = QCompleter(stringList)
+        # 设置大小写不敏感
+        completer.setCaseSensitivity(Qt.CaseInsensitive)
+
+
+
         self.lineedit = QLineEdit()
+        self.lineedit.setCompleter(completer)
         # 绑定信号与槽函数
         self.lineedit.textChanged.connect(self.text_changed)
         self.lineedit.returnPressed.connect(self.return_pressed)
