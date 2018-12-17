@@ -68,6 +68,7 @@ class MyWindow(QWidget):
         self.setLayout(layout)
 
         label = QLabel("C @(0, 0)")
+        # TODO: 添加label的属性，让每一个label边界都很明显的显示出来，容易区分GridLayout的格子
         layout.addWidget(label, 0, 0)
 
         label = QLabel("C++ @(0, 1)")
