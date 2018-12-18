@@ -38,7 +38,7 @@ groupbox.setChecked(True)
 """
 
 from PyQt5.QtWidgets import QWidget, QApplication, QGridLayout, QGroupBox
-from PyQt5.QtWidgets import QVBoxLayout, QRadioButton
+from PyQt5.QtWidgets import QVBoxLayout, QRadioButton, QHBoxLayout
 import sys
 
 
@@ -47,22 +47,39 @@ class MyWindow(QWidget):
         super(MyWindow, self).__init__()
         self.initGUI("PyQt5 学习 QGroupBox")
 
-        layout = QGridLayout()
-        self.setLayout(layout)
+        mainLayout = QGridLayout()
+        self.setLayout(mainLayout)
 
-        groupbox = QGroupBox("GroupBox 示例")
+        groupbox = QGroupBox("英雄类型")
         groupbox.setCheckable(True)
-        layout.addWidget(groupbox)
+        mainLayout.addWidget(groupbox, 0, 0)
 
         vbox = QVBoxLayout()
         groupbox.setLayout(vbox)
 
-        radiobutton = QRadioButton("复选框1")
+        radiobutton = QRadioButton("法师")
         radiobutton.setChecked(True)
         vbox.addWidget(radiobutton)
 
-        radiobutton = QRadioButton("RadioButton 2")
+        radiobutton = QRadioButton("刺客")
         vbox.addWidget(radiobutton)
+
+        groupbox2 = QGroupBox("籍贯")
+        groupbox2.setCheckable(True)
+        mainLayout.addWidget(groupbox2, 1, 0)
+
+        hbox = QHBoxLayout()
+        groupbox2.setLayout(hbox)
+
+        radiobutton = QRadioButton("仙界")
+        radiobutton.setChecked(True)
+        hbox.addWidget(radiobutton)
+
+        radiobutton = QRadioButton("魔界")
+        hbox.addWidget(radiobutton)
+
+        radiobutton = QRadioButton("人界")
+        hbox.addWidget(radiobutton)
 
     def initGUI(self, title):
         """
