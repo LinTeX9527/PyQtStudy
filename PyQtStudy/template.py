@@ -7,13 +7,20 @@ Create on
 @author: lintex9527@yeah.net
 """
 
-"""
-PyQt5 工程模板
-"""
-
 from PyQt5.QtWidgets import QWidget, QApplication, QGridLayout
 from PyQt5.QtCore import Qt
 import sys
+
+"""
+PyQt5 工程模板
+
+构造方法
+=======
+
+常用方法
+=======
+
+"""
 
 
 class MyWindow(QWidget):
