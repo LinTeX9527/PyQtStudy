@@ -25,10 +25,10 @@ boxlayout.insertWidget(index, widget, stretch, alignment)
 
 @stretch integer 类型，指示子组件的伸展系数
 @alignment 表示对齐方式，可以是以下值：
-Qt.AlignmentLeft
-Qt.AlignmentRight
-Qt.AlignmentHCenter
-Qt.AlignmentJustify
+Qt.AlignLeft
+Qt.AlignRight
+Qt.AlignHCenter
+Qt.AlignJustify
 
 可以在 BoxLayout 中添加其他的布局管理器:
 boxlayout.addLayout(layout, stretch)

@@ -23,10 +23,10 @@ gridlayout.addWidget(widget, row, column, rowspan, columnspan, alignment)
 @rowspan, @cloumnspan 指定跨列的数目
 @alignment 指定对其方式，可以是以下值：
 
-Qt.AlignmentLeft
-Qt.AlignmentRight
-Qt.AlignmentHCenter
-Qt.AlignmentJustify
+Qt.AlignLeft
+Qt.AlignRight
+Qt.AlignHCenter
+Qt.AlignJustify
 
 也可以嵌套地加入其它的布局管理器
 =============================

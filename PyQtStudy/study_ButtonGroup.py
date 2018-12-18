@@ -56,7 +56,9 @@ buttonToggled(id)
 """
 
 from PyQt5.QtWidgets import QWidget, QApplication, QGridLayout, QButtonGroup
-from PyQt5.QtWidgets import QPushButton, QRadioButton, QCheckBox
+from PyQt5.QtWidgets import QPushButton, QRadioButton, QCheckBox, QLabel
+from PyQt5.QtWidgets import QBoxLayout
+from PyQt5.QtCore import Qt
 import sys
 
 
@@ -102,12 +104,45 @@ class MyWindow(QWidget):
         self.buttonGroup.addButton(checkbox, 6)
         layout.addWidget(checkbox, 2, 1)
 
+        # layout.setVerticalSpacing(5)
+        # layout.setHorizontalSpacing(5)
+
+        boxlayout = QBoxLayout(QBoxLayout.LeftToRight)
+        label = QLabel("------分割线------")
+        boxlayout.addWidget(label, 1, Qt.AlignHCenter)
+        layout.addLayout(boxlayout, 3, 0, 1, 2, Qt.AlignJustify)
+
+        layout2 = QGridLayout()
+        layout.addLayout(layout2, 4, 0, 1, 2, Qt.AlignJustify)
+        self.btn_group2 = QButtonGroup()
+        self.btn_group2.setExclusive(False)
+        self.btn_group2.buttonClicked[int].connect(self.on_btn_group2_clicked)
+
+        radio = QRadioButton("神仙?")
+        self.btn_group2.addButton(radio, 1)
+        layout2.addWidget(radio, 0, 0, 2, 2, Qt.AlignJustify)
+
+        layout2.setHorizontalSpacing(10)
+
+        radio = QRadioButton("妖怪?")
+        self.btn_group2.addButton(radio, 2)
+        layout2.addWidget(radio, 0, 2, 2, 2, Qt.AlignJustify)
+
+
     def on_button_clicked(self, id):
         """
         遍历按钮组，找到这个按钮
         """
         for button in self.buttonGroup.buttons():
             if button is self.buttonGroup.button(id):
+                print("%s was clicked" % (button.text()))
+
+    def on_btn_group2_clicked(self, id):
+        """
+        第二个按钮分组有按钮被单击
+        """
+        for button in self.btn_group2.buttons():
+            if button is self.btn_group2.button(id):
                 print("%s was clicked" % (button.text()))
 
     def initGUI(self, title):
