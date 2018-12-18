@@ -62,6 +62,7 @@ sliderPressed(void)/sliderReleased(void)
 """
 
 from PyQt5.QtWidgets import QWidget, QApplication, QGridLayout, QSlider, QLabel
+from PyQt5.QtWidgets import QScrollArea
 from PyQt5.QtCore import Qt
 import sys
 
@@ -95,9 +96,13 @@ class MyWindow(QWidget):
 
         self.logMsg = QLabel()
         # FIXME: 需要自动换行，应该外面加一个QScrollBar
-        self.logMsg.setMinimumWidth(150)
-        self.logMsg.setMinimumHeight(60)
-        mainLayout.addWidget(self.logMsg, 1, 0, 1, 2, Qt.AlignJustify)
+        # self.logMsg.setMinimumWidth(150)
+        # self.logMsg.setMinimumHeight(60)
+        self.scroll_area = QScrollArea()
+        self.scroll_area.setWidget(self.logMsg)
+        self.scroll_area.setWidgetResizable(True)
+
+        mainLayout.addWidget(self.scroll_area, 1, 0, 1, 2)
 
     def showMsg(self, msg):
         newText = self.logMsg.text() + "\n" + msg

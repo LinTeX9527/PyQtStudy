@@ -21,8 +21,10 @@ gridlayout.addWidget(widget, row, column, rowspan, columnspan, alignment)
 
 @row, @column 从左上角(0, 0)开始的坐标系统
 @rowspan, @cloumnspan 指定跨列的数目
-@alignment 指定对其方式，可以是以下值：
+(NOTE: 如果设置为-1，会自动延伸到布局的bottom/right边界)
 
+@alignment 指定对其方式，可以是以下值：
+(NOTE: 如果不指定或者设为0，会自动填充整个布局)
 Qt.AlignLeft
 Qt.AlignRight
 Qt.AlignHCenter
