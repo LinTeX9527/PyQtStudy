@@ -56,7 +56,7 @@ buttonToggled(id)
 """
 
 from PyQt5.QtWidgets import QWidget, QApplication, QGridLayout, QButtonGroup
-from PyQt5.QtWidgets import QPushButton, QRadioButton
+from PyQt5.QtWidgets import QPushButton, QRadioButton, QCheckBox
 import sys
 
 
@@ -92,6 +92,15 @@ class MyWindow(QWidget):
         rdBtn = QRadioButton("单选按钮2")
         self.buttonGroup.addButton(rdBtn, 4)
         layout.addWidget(rdBtn, 1, 1)
+
+        # 添加了复选框到同一个分组，四个按钮同时只能选择一个。
+        checkbox = QCheckBox("复选框1")
+        self.buttonGroup.addButton(checkbox, 5)
+        layout.addWidget(checkbox, 2, 0)
+
+        checkbox = QCheckBox("复选框2")
+        self.buttonGroup.addButton(checkbox, 6)
+        layout.addWidget(checkbox, 2, 1)
 
     def on_button_clicked(self, id):
         """
