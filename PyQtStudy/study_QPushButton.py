@@ -54,7 +54,7 @@ class MyWindow(QWidget):
         layout.addWidget(self.label, 1, 0)
 
     def on_button_clicked(self):
-        self.count +=1
+        self.count += 1
         self.label.setText("按钮单击了%d次" % (self.count))
 
     def initGUI(self, title):

@@ -26,19 +26,21 @@ Qt.AlignLeft
 Qt.AlignRight
 Qt.AlignHCenter
 
+NOTE: 注意区分 setCheckable() 和 setChecked() 的不同之处
 groupbox.setCheckable(checkable)
-设定所有的子元素（CheckBox, RadioButton）是否可以选中
+设置group box 是否显示一个复选框，如果为 True 则显示复选框
 
 groupbox.isChecked()
 检查GroupBox 是否被选中
 
 groupbox.setChecked(True)
-设置GroupBox被选中，其中的复选框会添加一个标记；如果设置为False，那么复选框会移除这个标记
+设置GroupBox被选中，其中的复选框会添加一个标记，而且所有的子元素都可以被选中；
+如果设置为False，所有的子元素都被 disable，而且用户不能访问
 
 """
 
 from PyQt5.QtWidgets import QWidget, QApplication, QGridLayout, QGroupBox
-from PyQt5.QtWidgets import QVBoxLayout, QRadioButton, QHBoxLayout
+from PyQt5.QtWidgets import QVBoxLayout, QRadioButton, QHBoxLayout, QPushButton
 import sys
 
 
@@ -50,12 +52,12 @@ class MyWindow(QWidget):
         mainLayout = QGridLayout()
         self.setLayout(mainLayout)
 
-        groupbox = QGroupBox("英雄类型")
-        groupbox.setCheckable(True)
-        mainLayout.addWidget(groupbox, 0, 0)
+        self.groupbox_hero = QGroupBox("英雄类型")
+        self.groupbox_hero.setCheckable(True)
+        mainLayout.addWidget(self.groupbox_hero, 0, 0)
 
         vbox = QVBoxLayout()
-        groupbox.setLayout(vbox)
+        self.groupbox_hero.setLayout(vbox)
 
         radiobutton = QRadioButton("法师")
         radiobutton.setChecked(True)
@@ -64,12 +66,20 @@ class MyWindow(QWidget):
         radiobutton = QRadioButton("刺客")
         vbox.addWidget(radiobutton)
 
-        groupbox2 = QGroupBox("籍贯")
-        groupbox2.setCheckable(True)
-        mainLayout.addWidget(groupbox2, 1, 0)
+        self.btn_hero = QPushButton("禁选英雄")
+        self.btn_hero.clicked.connect(self.on_btn_clicked)
+        mainLayout.addWidget(self.btn_hero, 1, 0)
+
+        self.btn_place = QPushButton("禁选籍贯")
+        self.btn_place.clicked.connect(self.on_btn_clicked)
+        mainLayout.addWidget(self.btn_place, 1, 1)
+
+        self.groupbox_place = QGroupBox("籍贯")
+        self.groupbox_place.setCheckable(True)
+        mainLayout.addWidget(self.groupbox_place, 2, 0)
 
         hbox = QHBoxLayout()
-        groupbox2.setLayout(hbox)
+        self.groupbox_place.setLayout(hbox)
 
         radiobutton = QRadioButton("仙界")
         radiobutton.setChecked(True)
@@ -80,6 +90,27 @@ class MyWindow(QWidget):
 
         radiobutton = QRadioButton("人界")
         hbox.addWidget(radiobutton)
+
+    def on_btn_clicked(self):
+        button = self.sender()
+        if button is self.btn_hero:
+            print("注意setCheckable() 和 setChecked() 不同之处")
+            if button.text() == "禁选英雄":
+                self.groupbox_hero.setChecked(False)
+                button.setText("选择英雄")
+            elif button.text() == "选择英雄":
+                self.groupbox_hero.setChecked(True)
+                button.setText("禁选英雄")
+        elif button is self.btn_place:
+            print("注意setCheckable() 和 setChecked() 不同之处")
+            if button.text() == "禁选籍贯":
+                self.groupbox_place.setCheckable(False)
+                button.setText("选择籍贯")
+            elif button.text() == "选择籍贯":
+                self.groupbox_place.setCheckable(True)
+                button.setText("禁选籍贯")
+        else:
+            print("寻找按钮失败")
 
     def initGUI(self, title):
         """
