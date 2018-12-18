@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>9d98996f-8de8-485b-8a1d-18f207b4a2fb</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>study_Slider.py</StartupFile>
+    <StartupFile>study_QDial.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -38,6 +38,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="study_LineEdit.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="study_QDial.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="study_QPushButton.py">
