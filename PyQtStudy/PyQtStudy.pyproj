@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>9d98996f-8de8-485b-8a1d-18f207b4a2fb</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>study_QDial.py</StartupFile>
+    <StartupFile>study_LCDNumber.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -35,6 +35,9 @@
     </Compile>
     <Compile Include="study_HelloWorld.py" />
     <Compile Include="study_Label.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="study_LCDNumber.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="study_LineEdit.py">
