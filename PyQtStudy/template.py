@@ -21,6 +21,9 @@ class MyWindow(QWidget):
         # TODO: 修改窗口名称
         self.initGUI("PyQt5 学习")
 
+        layout = QGridLayout()
+        self.setLayout(layout)
+
     def initGUI(self, title):
         """
         设置窗口大小和位置，以及标题
