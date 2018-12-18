@@ -42,9 +42,26 @@ QSlider.TicksAbove -- 在水平方向的上面显示
 QSlider.TicksBelow -- 在水平方向的下面显示
 QSlider.TicksLeft  -- 在垂直方向的左侧显示
 QSlider.TicksRight -- 在垂直方向的右侧显示
+
+int singleStep(void)
+获取用户按方向键时滑动条移动的最小步长
+void setSingleStep(int)
+设置最小步长
+
+signals 最关心的
+===============
+valueChanged(int)
+值发生改变时会发出这个信号。 tracking() 会决定用户与之交互时是否发送这个信号。
+
+sliderMoved(int)
+用户在拖动滑动条时触发
+
+sliderPressed(void)/sliderReleased(void)
+用户交互时触发
+
 """
 
-from PyQt5.QtWidgets import QWidget, QApplication, QGridLayout, QSlider
+from PyQt5.QtWidgets import QWidget, QApplication, QGridLayout, QSlider, QLabel
 from PyQt5.QtCore import Qt
 import sys
 
@@ -57,13 +74,32 @@ class MyWindow(QWidget):
         mainLayout = QGridLayout()
         self.setLayout(mainLayout)
 
-        slider = QSlider(Qt.Horizontal)
-        slider.setValue(4)
-        mainLayout.addWidget(slider, 0, 0)
+        self.hslider = QSlider(Qt.Horizontal)
+        self.hslider.setValue(4)
+        self.hslider.valueChanged.connect(self.on_value_changed_function)
+        self.hslider.sliderMoved.connect(self.on_slider_moved_function)
+        self.hslider.sliderPressed.connect(self.on_slider_pressed_function)
+        self.hslider.sliderReleased.connect(self.on_slider_released_function)
+        mainLayout.addWidget(self.hslider, 0, 0)
 
-        slider = QSlider(Qt.Vertical)
-        slider.setValue(4)
-        mainLayout.addWidget(slider, 0, 1)
+        self.vslider = QSlider(Qt.Vertical)
+        self.vslider.setValue(4)
+        mainLayout.addWidget(self.vslider, 0, 1)
+
+        self.logMsg = QLabel()
+        mainLayout.addWidget(self.logMsg, 1, 0, 1, 2, Qt.AlignJustify)
+
+    def on_value_changed_function(self, newValue):
+        print("valueChanged: %d" % (newValue))
+
+    def on_slider_moved_function(self, newValue):
+        print("sliderMoved: %d" % (newValue))
+
+    def on_slider_pressed_function(self):
+        print("sliderPressed")
+
+    def on_slider_released_function(self):
+        print("sliderReleased")
 
     def initGUI(self, title):
         """
