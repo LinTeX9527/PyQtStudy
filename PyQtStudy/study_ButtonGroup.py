@@ -56,7 +56,7 @@ buttonToggled(id)
 """
 
 from PyQt5.QtWidgets import QWidget, QApplication, QGridLayout, QButtonGroup
-from PyQt5.QtWidgets import QPushButton
+from PyQt5.QtWidgets import QPushButton, QRadioButton
 import sys
 
 
@@ -70,18 +70,28 @@ class MyWindow(QWidget):
         self.setLayout(layout)
 
         self.buttonGroup = QButtonGroup()
-        # 按钮不是互斥的，即可以同时选中多个按钮
-        self.buttonGroup.setExclusive(False)
+        # # 按钮不是互斥的，即可以同时选中多个按钮
+        # self.buttonGroup.setExclusive(False)
+        # 按钮是互斥的，即同一时刻只能选中1个按钮
+        self.buttonGroup.setExclusive(True)
         # NOTE: 绑定信号与槽函数，信号是 buttonGroup.buttonClicked(id)，槽函数是 on_button_clicked(id)
         self.buttonGroup.buttonClicked[int].connect(self.on_button_clicked)
 
         button = QPushButton("PushButton 1")
         self.buttonGroup.addButton(button, 1)
-        layout.addWidget(button)
+        layout.addWidget(button, 0, 0)
 
         button = QPushButton("PushButton 2")
         self.buttonGroup.addButton(button, 2)
-        layout.addWidget(button)
+        layout.addWidget(button, 0, 1)
+
+        rdBtn = QRadioButton("单选按钮1")
+        self.buttonGroup.addButton(rdBtn, 3)
+        layout.addWidget(rdBtn, 1, 0)
+
+        rdBtn = QRadioButton("单选按钮2")
+        self.buttonGroup.addButton(rdBtn, 4)
+        layout.addWidget(rdBtn, 1, 1)
 
     def on_button_clicked(self, id):
         """
