@@ -12,6 +12,7 @@ PyQt5 工程模板
 """
 
 from PyQt5.QtWidgets import QWidget, QApplication, QGridLayout
+from PyQt5.QtCore import Qt
 import sys
 
 
@@ -21,8 +22,8 @@ class MyWindow(QWidget):
         # TODO: 修改窗口名称
         self.initGUI("PyQt5 学习")
 
-        layout = QGridLayout()
-        self.setLayout(layout)
+        mainLayout = QGridLayout()
+        self.setLayout(mainLayout)
 
     def initGUI(self, title):
         """
