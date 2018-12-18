@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>9d98996f-8de8-485b-8a1d-18f207b4a2fb</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>study_LineEdit.py</StartupFile>
+    <StartupFile>study_ButtonGroup.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -23,6 +23,9 @@
   <ItemGroup>
     <Compile Include="PyQtStudy.py" />
     <Compile Include="study_BoxLayout.py" />
+    <Compile Include="study_ButtonGroup.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="study_CheckBox.py">
       <SubType>Code</SubType>
     </Compile>
