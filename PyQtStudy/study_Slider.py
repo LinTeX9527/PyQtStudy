@@ -76,30 +76,48 @@ class MyWindow(QWidget):
 
         self.hslider = QSlider(Qt.Horizontal)
         self.hslider.setValue(4)
+        self.hslider.setTickInterval(10)
+        self.hslider.setTickPosition(QSlider.TicksBelow)
         self.hslider.valueChanged.connect(self.on_value_changed_function)
         self.hslider.sliderMoved.connect(self.on_slider_moved_function)
         self.hslider.sliderPressed.connect(self.on_slider_pressed_function)
         self.hslider.sliderReleased.connect(self.on_slider_released_function)
         mainLayout.addWidget(self.hslider, 0, 0)
 
+        mainLayout.setHorizontalSpacing(30)
+        mainLayout.setVerticalSpacing(30)
+
         self.vslider = QSlider(Qt.Vertical)
         self.vslider.setValue(4)
+        self.vslider.setTickInterval(20)
+        self.vslider.setTickPosition(QSlider.TicksBothSides)
         mainLayout.addWidget(self.vslider, 0, 1)
 
         self.logMsg = QLabel()
+        # FIXME: 需要自动换行，应该外面加一个QScrollBar
+        self.logMsg.setMinimumWidth(150)
+        self.logMsg.setMinimumHeight(60)
         mainLayout.addWidget(self.logMsg, 1, 0, 1, 2, Qt.AlignJustify)
+
+    def showMsg(self, msg):
+        newText = self.logMsg.text() + "\n" + msg
+        self.logMsg.setText(newText)
 
     def on_value_changed_function(self, newValue):
         print("valueChanged: %d" % (newValue))
+        self.showMsg("valueChanged: %d" % (newValue))
 
     def on_slider_moved_function(self, newValue):
         print("sliderMoved: %d" % (newValue))
+        self.showMsg("sliderMoved: %d" % (newValue))
 
     def on_slider_pressed_function(self):
         print("sliderPressed")
+        self.showMsg("sliderPressed")
 
     def on_slider_released_function(self):
         print("sliderReleased")
+        self.showMsg("sliderReleased")
 
     def initGUI(self, title):
         """
