@@ -126,7 +126,8 @@ class MyWindow(QWidget):
             if ok:
                 self.ld_age.setText(str(text))
         elif sender == self.btn_sex:
-            text, ok = QInputDialog.getItem(self, "修改性别", "请选择性别：", sex)
+            # 注意这里添加了一个参数 editable=False 表示用户不能修改输入框，只能从提供的列表中选取一个值
+            text, ok = QInputDialog.getItem(self, "修改性别", "请选择性别：", sex, editable=False)
             if ok:
                 self.ld_sex.setText(text)
         elif sender == self.btn_height:
