@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>9d98996f-8de8-485b-8a1d-18f207b4a2fb</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>study_MessageBox.py</StartupFile>
+    <StartupFile>study_ProgressDialog.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -56,6 +56,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="study_ProgressBar.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="study_ProgressDialog.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="study_QDial.py">
