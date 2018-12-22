@@ -3,7 +3,7 @@
 """
 Created on Mon Dec 17 12:34:11 2018
 
-@author: shenglin.zhan@lightningsemi.com
+@author: lintex9527@yeah.net
 """
 
 from PyQt5.QtWidgets import *
